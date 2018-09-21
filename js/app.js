@@ -18,7 +18,7 @@
  *   - add each card's HTML to the page
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+// shuffle from - http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -69,23 +69,15 @@ function shuffle(array) {
 
        if (openCards.length == 2) {
          moveCount();
-
-         /*selected cards match = yes */
-
          if (openCards[0].dataset.card == openCards[1].dataset.card) {
-
           openCards[0].classList.add('match');
           openCards[0].classList.add('open');
           openCards[0].classList.add('show');
-
           openCards[1].classList.add('match');
           openCards[1].classList.add('open');
           openCards[1].classList.add('show');
-
           openCards = [];
-
           winGame();
-
         } else {
           setTimeout(function() {
             openCards.forEach(function(card) {
@@ -100,7 +92,7 @@ function shuffle(array) {
  });
  }
 
- /* count moves */
+// move counting total
  let moves = 0;
  let moveCounter = document.querySelector('.moves');
  let stars = document.querySelector('.stars');
@@ -111,7 +103,7 @@ function shuffle(array) {
    moves++;
    moveCounter.innerHTML = moves;
 
-   /*star ratings -- min number of moves = 8 */
+   // stars count
 
    if (moves > 10  && moves <= 20) {
        one.style.display = "none";
@@ -120,9 +112,7 @@ function shuffle(array) {
    }
  }
 
- /*set up for game clock*/
- /* info on setInterval method found at
- https://www.w3schools.com/jsref/met_win_setinterval.asp */
+// timer
 
  let timer = document.querySelector('.timer');
  var timing;
@@ -137,21 +127,16 @@ function shuffle(array) {
    }, 1000);
  }
 
- /*info on clearInterval method found at
- https://www.w3schools.com/jsref/met_win_clearinterval.asp*/
+ // working with DOM timing
 
  function resetTimer() {
    clearInterval(timing);
-
-
    console.log(timing);
-
  }
-
  document.querySelector('.restart').addEventListener('click', resetTimer);
 
- /* JS for Modal */
- /* modal info found at https://www.w3schools.com/w3css/w3css_modal.asp */
+
+ // modal - https://www.w3schools.com/w3css/w3css_modal.asp
 
  let matchedCards = document.getElementsByClassName('match');
  let modal = document.querySelector('.modal');
